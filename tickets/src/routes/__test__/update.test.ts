@@ -111,9 +111,12 @@ it(' Cannot edit a reserved ticket', async () => {
     .expect(201)
 
   // set orderId
+  const update = await Ticket.findById(body.id)
+  update!.set({ orderId: mongoose.Types.ObjectId().toHexString() })
+  await update!.save()
 
   //expect reject 400
-  const update = await request(app)
+  await request(app)
     .put('/api/tickets/' + body.id)
     .set('Cookie', cookie)
     .send({ title: 'born again2', price: 300 })
