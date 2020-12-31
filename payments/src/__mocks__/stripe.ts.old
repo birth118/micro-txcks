@@ -1,0 +1,15 @@
+// export const stripe = {
+//   charges: {
+//     create: jest.fn().mockResolvedValue({}), // mockResolvedValue({}) because charges() returns Promise
+//   },
+// }
+
+export const stripe = {
+  charges: {
+    create: jest
+      .fn()
+      // .mockImplementation(
+      //   (amount: number, currency: string, source: string) => {}
+      .mockImplementation(() => {}),
+  },
+}
