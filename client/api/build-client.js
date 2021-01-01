@@ -5,7 +5,8 @@ export default ({ req }) => {
     console.log('on Server');
     return axios.create({
 
-      baseURL: 'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local',
+      // baseURL: 'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local',
+      baseURL: 'http://www.waitaralab.xyz',
       headers: req.headers
     })
 
