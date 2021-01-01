@@ -26,7 +26,7 @@ const Landing = ({ currentUser, tickets }) => {   // This is REACT component tha
   // console.log(currentUser);
   // const resp = axios.get('/api/users/currentuser')  
   return <div>
-    <h1>Tickets</h1>
+    <h2>Tickets</h2>
     <table className="table">
       <thead>
         <tr>

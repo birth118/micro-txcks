@@ -8,7 +8,7 @@ import { randomBytes } from 'crypto'
 const port = process.env.PORT || 3000
 
 const start = async () => {
-  console.log('starting..')
+  console.log('starting...')
 
   //   DB_TEST_URL=mongodb://127.0.0.1:27017
 
