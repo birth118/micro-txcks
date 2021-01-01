@@ -1,0 +1,21 @@
+name: deploy-manifests
+
+on:
+  push:  # whenver we close or merge a pull request, that actually counts as push directly to the master branch
+    branches:
+      - master
+    paths:
+      - 'infra/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{DIGITALOCEAN_ACCESS_TOKEN}}
+      - run: doctl kubernetes cluster kubeconfig save micro-ticketing
+      - run: kubectl apply -f infra/k8s.local  # now apply all config yamls to the cluster 
+            
