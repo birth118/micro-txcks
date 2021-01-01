@@ -19,7 +19,8 @@ app.use(
   cookieSession({
     signed: false, // To disable excryption
     //  secure: true, // cookie is only sent over HTTPs
-    secure: process.env.NODE_ENV !== 'test', //  true:  cookie is only sent over HTTPs
+    //secure: process.env.NODE_ENV !== 'test', //  true:  cookie is only sent over HTTPs
+    secure: false, // cookie can be sent over HTTP, not HTTPs
   })
 )
 
