@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
         - name: client
-          image: us.gcr.io/micro-ticketing-dev/client
+          image: birth118/client
+
 ---
 apiVersion: v1
 kind: Service
