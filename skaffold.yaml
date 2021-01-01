@@ -9,11 +9,13 @@ kind: Config
 deploy:
   kubectl:
     manifests:
-      - ./infra/k8s/*
+      - ./infra/k8s/* # for local cluster
+      # - ./infra/k8s-gke/* # for Google Cloud cluster
+      - ./infra/k8s-dev/* # for ingress dev environment
 build:
   # local:
   #   push: false
-  googleCloudBuild:
+  googleCloudBuild: # for Google Cloud
     projectId: micro-ticketing-dev
   artifacts:
     - image: us.gcr.io/micro-ticketing-dev/auth

@@ -1,0 +1,26 @@
+name: deploy-payments
+
+on:
+  push: # whenver we close or merge a pull request, that actually counts as push directly to the master branch
+    branches:
+      - master
+    paths:
+      - 'payments/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: cd payments && docker build -t birth118/payments . # build image
+      - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+        env:
+          DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
+          DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+      - run: docker push birth118/payments #push the image to dockerHub
+      - uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{secrets.DIGITALOCEAN_ACCESS_TOKEN}}
+      - run: doctl kubernetes cluster kubeconfig save micro-ticketing
+      - run: kubectl rollout restart deployment payments-depl # now deploy to the cluster
+
