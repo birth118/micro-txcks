@@ -20,7 +20,7 @@ jobs:
       - run: docker push birth118/auth    #push the image to dockerHub
       - uses: digitalocean/action-doctl@v2
         with:
-          token: ${{DIGITALOCEAN_ACCESS_TOKEN}}
+          token: ${{secrets.DIGITALOCEAN_ACCESS_TOKEN}}
       - run: doctl kubernetes cluster kubeconfig save micro-ticketing
       - run: kubectl rollout restart deployment auth-depl  # now deploy to the cluster 
             
