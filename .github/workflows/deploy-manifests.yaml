@@ -1,3 +1,4 @@
+
 name: deploy-manifests
 
 on:
@@ -18,4 +19,3 @@ jobs:
           token: ${{secrets.DIGITALOCEAN_ACCESS_TOKEN}}
       - run: doctl kubernetes cluster kubeconfig save micro-ticketing
       - run: kubectl apply -f infra/k8s && kubectl apply -f infra/k8s-prod  # now apply all config yamls to the cluster 
-            
