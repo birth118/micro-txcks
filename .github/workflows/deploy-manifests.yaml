@@ -15,7 +15,7 @@ jobs:
 
       - uses: digitalocean/action-doctl@v2
         with:
-          token: ${{DIGITALOCEAN_ACCESS_TOKEN}}
+          token: ${{secrets.DIGITALOCEAN_ACCESS_TOKEN}}
       - run: doctl kubernetes cluster kubeconfig save micro-ticketing
       - run: kubectl apply -f infra/k8s && kubectl apply -f infra/k8s-prod  # now apply all config yamls to the cluster 
             
