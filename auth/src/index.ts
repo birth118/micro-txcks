@@ -4,7 +4,7 @@ import { app } from './app'
 const port = process.env.PORT || 3000
 
 const start = async () => {
-  console.log('Starting...')
+  console.log('Starting....')
 
   //   DB_TEST_URL=mongodb://127.0.0.1:27017
 
