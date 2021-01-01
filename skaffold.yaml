@@ -9,7 +9,7 @@ kind: Config
 deploy:
   kubectl:
     manifests:
-      - ./infra/k8s/* # for local cluste
+      - ./infra/k8s/* # for local cluster
       # - ./infra/k8s-gke/* # for Google Cloud cluster
       - ./infra/k8s-dev/* # for ingress dev environment
 build:
